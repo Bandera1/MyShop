@@ -1,0 +1,102 @@
+﻿body {
+   
+}
+
+.myCard {
+    margin: 0.55rem;
+    /*width:286px;*/
+}
+
+
+/*----------------IMAGE---------------------*/
+
+.card-image {
+    user-select:none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*width: 286px;*/
+    height: 286px;
+    background: url(https://assets.adidas.com/images/w_840,h_840,f_auto,q_auto:sensitive,fl_lossy/75f256ce5d084933b108aabf011fc4a2_9366/SST_Track_Pants_Blue_FM3807_21_model.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    transition:0.2s ease-in-out;
+}
+
+.card-image-exclusive {
+    float: left;
+    margin-top: 3rem;
+}
+
+.card-image-exclusive-text {
+    background-color: #353b48;
+    color: white;
+    font-weight: 400;
+}
+
+.card-image-new-text {
+    background-color: #009432;
+    color: white;
+    font-weight: 400;
+}
+
+.card-image-heart {
+    float: right;
+    font-size: 30px;
+    margin: 0.5rem;
+    color: #2d3436;
+    height:1rem !important;
+}
+
+.card-image-heart:hover {
+    cursor:pointer;
+    font-weight:600;
+}
+
+.card-image:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+
+
+/*----------------Info---------------------*/
+
+.card-body{
+   padding:0.5rem !important;
+}
+
+.card-info-flex{
+    display:flex;
+    flex-direction:column;
+}
+
+.card-info-text {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.card-info-downInfo {
+    display: flex;
+    justify-content:space-between;
+}
+
+.card-info-downInfo-rating {
+    display: flex;
+    align-items:baseline;
+}
+
+.card-info-downInfo-star {
+    color: #fbc531;
+}
+
+.card-info-downInfo-ratingText {
+    font-family: 'Ubuntu', sans-serif;
+    color: #8c8b8b;
+}
+
+i {
+    height: 0px;
+}

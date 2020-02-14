@@ -1,0 +1,49 @@
+﻿body {
+}
+
+.home-nav {
+    background: #f8f9fa;
+    height:auto;
+}
+
+.sidebar {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.sidebar a {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+
+
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */       
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.home-nav ul {
+    float: left;
+    width: 100%;
+}
+
+.home-nav ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 60px;
+    border-bottom: 3px solid #2c3e50;
+    min-width: 12rem;
+    transition: 0.4s;
+}
+
+.home-nav ul li:hover {
+    cursor: pointer;
+    background-color: #95a5a6;
+}

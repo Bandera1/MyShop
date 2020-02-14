@@ -2,7 +2,9 @@ C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\bin\Debug\netcoreapp2.1\Shop_MVC.
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\bin\Debug\netcoreapp2.1\Shop_MVC.runtimeconfig.json
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\bin\Debug\netcoreapp2.1\Shop_MVC.runtimeconfig.dev.json
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\bin\Debug\netcoreapp2.1\Shop_MVC.dll
-C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.csprojAssemblyReference.cache
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\bin\Debug\netcoreapp2.1\Shop_MVC.pdb
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\bin\Debug\netcoreapp2.1\Shop_MVC.Views.dll
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\bin\Debug\netcoreapp2.1\Shop_MVC.Views.pdb
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.csproj.CoreCompileInputs.cache
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.RazorAssemblyInfo.cache
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.RazorAssemblyInfo.cs
@@ -23,3 +25,9 @@ C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Razor\Vie
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.RazorTargetAssemblyInfo.cache
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.RazorTargetAssemblyInfo.cs
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.Views.pdb
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.dll
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.pdb
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.csproj.CopyComplete
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.csprojAssemblyReference.cache
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Razor\Views\Shared\HomeProduct.g.cshtml.cs

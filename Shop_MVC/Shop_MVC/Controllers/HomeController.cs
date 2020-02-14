@@ -9,7 +9,7 @@ using Shop_MVC.Models;
 namespace Shop_MVC.Controllers
 {
     public class HomeController : Controller
-    {
+    {      
         public IActionResult Index()
         {
             return View();

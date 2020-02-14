@@ -1,0 +1,83 @@
+.pagination{
+    display: flex;
+    user-select:none;
+    margin: 2rem;
+    align-self:center;
+    /* width: 5rem;
+    height: 2rem; */
+}
+
+
+
+.pagination a.three_dot:hover{
+    cursor: default;
+}
+
+.pagination a {
+    color: #2f3640;
+    font-size: 1.3rem;
+    text-decoration: none;
+    text-align: center;
+    /* transition: 0.4s all; */
+    padding: 10px;
+    border: 1.5px solid #dddddd;
+    font-family: 'Bree Serif';
+    /*font-family: 'Jersey', sans-serif;*/
+    margin-right: 0.1rem;
+    min-width: 2rem;
+    max-height: 77.19px;
+}
+
+.pagination a.active{
+    background-color: #4caf50;
+    border: 1px,solid, #4caf50;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+
+
+.pagination a:hover:not(.active):not(.three_dot){
+    background-color: #ddd; 
+    color:black !important; 
+    text-decoration: none;
+}
+
+.pagination a:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pagination a:first-child,
+.pagination a:last-child{
+    text-align: center;  
+    min-width: 5rem;
+}
+
+@media(min-width:685px){
+    .pre{
+        display:none;
+    }
+}
+
+@media(max-width:685px){
+    .pagination a:not(.prev):not(.next):not(.active):not(.pre) {
+        display:none;      
+    }
+
+    .pagination a {
+        font-size: 2rem;
+    }
+
+    .pre{
+        min-width:1rem !important;
+    }
+
+    .next, .prev{
+        width:3rem !important;
+    }
+}
