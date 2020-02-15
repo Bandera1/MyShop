@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+    <Win32Resource />
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Repository\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\js\Home\" />
   </ItemGroup>
 
 </Project>

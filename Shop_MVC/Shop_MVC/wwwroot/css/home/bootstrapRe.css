@@ -1,0 +1,17 @@
+﻿body {
+}
+
+
+#CategoriesDropDownBtn {
+    width: 100% !important;
+    min-width:14rem;
+    margin-top: 3rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size:20px;
+}
+
+.sidebar-flex p{
+    margin-top: 0rem !important;
+}

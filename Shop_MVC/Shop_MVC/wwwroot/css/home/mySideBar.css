@@ -2,8 +2,9 @@
 }
 
 .home-nav {
-    background: #f8f9fa;
-    height:auto;
+    /*background: #f8f9fa;*/
+    background: white;
+    height: auto;
 }
 
 .sidebar {
@@ -17,7 +18,7 @@
 .sidebar a {
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
 
 
 
@@ -37,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 60px;
+    line-height: 50px;
     border-bottom: 3px solid #2c3e50;
     min-width: 12rem;
     transition: 0.4s;

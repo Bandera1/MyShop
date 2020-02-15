@@ -37,7 +37,6 @@
 #home-card {
     /*width: 83vw !important;*/
     border: 3px solid #EBEBED;
-
 }
 
 .card-content-flex {
@@ -86,10 +85,11 @@ footer {
 .color-flex {
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
-    background-color: #dcdde1;
-    border-radius:5px;
-    padding:0.7rem;
+    /*margin-top: 3rem;*/
+    /*background-color: #dcdde1;*/
+    background-color: white;
+    border-radius: 5px;
+    padding: 0.7rem;
 }
 
 .color-inner{
@@ -118,14 +118,18 @@ footer {
 }
 
 
-
+.shopingCount {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    word-spacing: 6px;
+}
 
 
 
 @media(max-width:993px) {
     .home-flex {
         flex-direction: column;
-        margin-top: 3.5rem;
+        margin-top: 0rem;
     }
 
     .content-flex {
@@ -139,7 +143,7 @@ footer {
         margin-bottom: 2rem;
     }
 
-    li {
+    .sidebar li {
         width: 100vw;
     }
 

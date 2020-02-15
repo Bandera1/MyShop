@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Shop_MVC.Data.Interfaces;
+using Shop_MVC.Data.Repository;
 
 namespace Shop_MVC
 {
@@ -42,6 +44,13 @@ namespace Shop_MVC
                 .AddDefaultTokenProviders();
 
 
+            services.AddTransient<ICategory, CategoryRepository>();
+            services.AddTransient<IProducer, ProducerRepository>();
+            services.AddTransient<IProduct, ProductRepository>();
+            services.AddTransient<IProductRating, ProductRatingRepository>();
+            services.AddTransient<IShopingCart, ShopingCartRepository>();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -64,7 +73,7 @@ namespace Shop_MVC
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{page}/{category?}/{producer?}/{size?}/{colors?}/{gender?}/{rating?}/");
             });
         }
     }

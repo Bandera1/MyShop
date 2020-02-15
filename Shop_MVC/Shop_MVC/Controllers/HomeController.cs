@@ -9,9 +9,13 @@ using Shop_MVC.Models;
 namespace Shop_MVC.Controllers
 {
     public class HomeController : Controller
-    {      
-        public IActionResult Index()
+    {
+        [Route("Home/")]
+        [Route("Home/{page}/")]
+        [Route("Home/{page}/{category}/")]
+        public IActionResult Index(string page,string category)
         {
+            ViewBag.Title = page;
             return View();
         }
 
@@ -39,5 +43,10 @@ namespace Shop_MVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //public void Click()
+        //{
+        //    System.Diagnostics.Debug.WriteLine("Click");
+        //}
     }
 }
