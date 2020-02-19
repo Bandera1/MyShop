@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,12 +12,31 @@ namespace Shop_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("Home/")]
-        [Route("Home/{page}/")]
-        [Route("Home/{page}/{category}/")]
-        public IActionResult Index(string page,string category)
+        //[Route("Home/Products")]
+        //[Route("Home/Products/{page}")]
+        //[Route("Home/Products/{page}/{category}")]
+        //[Route("Home/Products/{page}/{category}/{producer}")]
+        //[Route("Home/Products/{page}/{category}/{producer}/{size}")]
+        //[Route("Home/Products/{page}/{category}/{producer}/{size}/{colors}")]
+        //[Route("Home/Products/{page}/{category}/{producer}/{size}/{colors}/{gender}")]
+        //[Route("Home/Products/{page}/{category}/{producer}/{size}/{colors}/{gender}/{rating}")]
+        //[HttpPost]
+        //public IActionResult Products(string page, string category, string producer, string size, string colors, string gender, string rating)
+        //{
+        //    return View();
+        //}
+
+
+
+
+
+
+
+
+        public IActionResult Index()
         {
-            ViewBag.Title = page;
+            
+
             return View();
         }
 

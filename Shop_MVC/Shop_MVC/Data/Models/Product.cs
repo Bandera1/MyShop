@@ -13,7 +13,6 @@ namespace Shop_MVC.Data.Models
         public string Photo { get; set; }
         public int Price { get; set; }
         public string Color { get; set; }
-        public int GenderId { get; set; }
         public DateTime DateOfAdded { get; set; }
         public bool IsExclusive { get; set; }
         public int ProducerId { get; set; }
@@ -21,7 +20,6 @@ namespace Shop_MVC.Data.Models
 
 
         public virtual Category Category { get; set; }
-        public virtual Gender Gender { get; set; }
         public virtual Producer Producer { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Shop_MVC.Controllers
+namespace Shop_MVC.Controllers.Catalogs
 {
-    public class SelectorController : Controller
+    public class MensController : Controller
     {
         public IActionResult Index()
         {

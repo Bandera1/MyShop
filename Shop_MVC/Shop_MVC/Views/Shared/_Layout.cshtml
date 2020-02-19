@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="~/css/simple-sidebar.css" rel="stylesheet" />
     <link href="~/css/home/home.css" rel="stylesheet" />
-    <link href="~/css/home/mySideBar.css" rel="stylesheet" />
+    <link href="~/css/home/sidebar/mySideBar.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
     <link href="~/css/other/paginationStyle.css" rel="stylesheet" />
     <link href="~/css/other/newPaginationStyle.css" rel="stylesheet" />
     <link href="~/css/other/Dropdown.css" rel="stylesheet" />
     <link href="~/css/home/bootstrapRe.css" rel="stylesheet" />
-
-
+    <link href="~/css/home/sidebar/size-flex.css" rel="stylesheet" />
 
 
     <script src="https://kit.fontawesome.com/8e6e62a7d6.js" crossorigin="anonymous"></script>
@@ -29,7 +28,7 @@
             <li><a style="font-weight:700;" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="LOL">My Shop</a></li>
             <li>
                 <a href="#">
-                    Categories
+                    Mens
                     <span class="drop-icon">▾</span>
                     <label title="Toggle Drop-down" class="drop-icon" for="sm1">▾</label>
                 </a>
@@ -43,16 +42,54 @@
                     <li><a href="#">Item 2.1</a></li>
                     <li><a href="#">Item 2.1</a></li>
                     <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#" style="font-weight:600">All categories</a></li>
+                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    Womans
+                    <span class="drop-icon">▾</span>
+                    <label title="Toggle Drop-down" class="drop-icon" for="sm3">▾</label>
+                </a>
+                <input type="checkbox" id="sm3">
+                <ul class="sub-menu">
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    Kids
+                    <span class="drop-icon">▾</span>
+                    <label title="Toggle Drop-down" class="drop-icon" for="sm4">▾</label>
+                </a>
+                <input type="checkbox" id="sm4">
+                <ul class="sub-menu">
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#">Item 2.1</a></li>
+                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#">
                     Producers
                     <span class="drop-icon">▾</span>
-                    <label title="Toggle Drop-down" class="drop-icon" for="sm1">▾</label>
+                    <label title="Toggle Drop-down" class="drop-icon" for="sm2">▾</label>
                 </a>
-                <input type="checkbox" id="sm1">
+                <input type="checkbox" id="sm2">
                 <ul class="sub-menu">
                     <li><a href="#">Item 2.1</a></li>
                     <li><a href="#">Item 2.1</a></li>
@@ -62,7 +99,7 @@
                     <li><a href="#">Item 2.1</a></li>
                     <li><a href="#">Item 2.1</a></li>
                     <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#" style="font-weight:600">All categories</a></li>
+                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
                 </ul>
             </li>
             <li><a href="#">Contacts</a></li>
@@ -75,47 +112,6 @@
         </ul>
     </nav>
 
-    @*<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand mb-0 h1" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="">My Shop</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-
-
-                    <li class="nav-item active">
-                        <div class="btn-group">
-                            <a style="color:white;" class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Categories
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Producers<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Contacts<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">About Us<span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button type="button" class="btn btn-light mr-2">
-                    <i class="fas fa-shopping-basket"></i>
-                        <span class="shopingCount">12</span>
-                    </button>
-                    <button class="btn btn-warning my-2 my-sm-0">Sign in</button>
-                </form>
-            </div>
-        </nav>*@
 
     <main>
         @RenderBody()
@@ -130,6 +126,7 @@
         <p class="footer-text">SUPPORT</p>
         <p class="footer-text">API</p>
     </footer>
+
 
     <script src="~/js/site.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

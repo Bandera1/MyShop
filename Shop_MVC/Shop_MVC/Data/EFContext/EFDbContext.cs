@@ -19,7 +19,7 @@ namespace FirstASP.NETapplication.Data.EFContext
 
         public virtual DbSet<UserProfile> UserProfile { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Gender> Genders { get; set; }
+        public virtual DbSet<CategoryType> CategoryTypes { get; set; }
         public virtual DbSet<Producer> Producers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductRating> ProductRatings { get; set; }

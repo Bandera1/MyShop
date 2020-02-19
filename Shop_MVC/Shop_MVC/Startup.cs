@@ -72,8 +72,12 @@ namespace Shop_MVC
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{page}/{category?}/{producer?}/{size?}/{colors?}/{gender?}/{rating?}/");
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "HomeRoute",
+                    template: "Home/Products/{page}/{category?}/{producer?}/{size?}/{colors?}/{gender?}/{rating?}",
+                    defaults: new { Controller = "Home", action = "Products" });
             });
         }
     }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Shop_MVC.Data.Models
 {
-    public class Gender : BaseEntity
+    public class CategoryType : BaseEntity
     {
         public string Name { get; set; }
     }

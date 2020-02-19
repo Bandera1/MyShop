@@ -4,14 +4,16 @@ using FirstASP.NETapplication.Data.EFContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Shop_MVC.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    partial class EFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200218232456_newCateg")]
+    partial class newCateg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -213,7 +215,7 @@ namespace Shop_MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CategoryTypes");
+                    b.ToTable("Genders");
                 });
 
             modelBuilder.Entity("Shop_MVC.Data.Models.Producer", b =>

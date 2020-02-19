@@ -4,14 +4,16 @@ using FirstASP.NETapplication.Data.EFContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Shop_MVC.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    partial class EFDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200218225504_categr")]
+    partial class categr
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,16 +196,12 @@ namespace Shop_MVC.Migrations
 
                     b.Property<int>("ParentId");
 
-                    b.Property<int>("TypeId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TypeId");
 
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Shop_MVC.Data.Models.CategoryType", b =>
+            modelBuilder.Entity("Shop_MVC.Data.Models.Gender", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -213,7 +211,7 @@ namespace Shop_MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CategoryTypes");
+                    b.ToTable("Genders");
                 });
 
             modelBuilder.Entity("Shop_MVC.Data.Models.Producer", b =>
@@ -243,6 +241,8 @@ namespace Shop_MVC.Migrations
 
                     b.Property<DateTime>("DateOfAdded");
 
+                    b.Property<int>("GenderId");
+
                     b.Property<bool>("IsExclusive");
 
                     b.Property<string>("Name");
@@ -256,6 +256,8 @@ namespace Shop_MVC.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("GenderId");
 
                     b.HasIndex("ProducerId");
 
@@ -375,19 +377,16 @@ namespace Shop_MVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Shop_MVC.Data.Models.Category", b =>
-                {
-                    b.HasOne("Shop_MVC.Data.Models.CategoryType", "Type")
-                        .WithMany()
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Shop_MVC.Data.Models.Product", b =>
                 {
                     b.HasOne("Shop_MVC.Data.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Shop_MVC.Data.Models.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Shop_MVC.Data.Models.Producer", "Producer")

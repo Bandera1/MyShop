@@ -16,14 +16,15 @@
     flex: 0.1;
     width: 100%;
     /*height: 80vh;*/
-    margin-left: 2rem;
+    /*margin-left: 2rem;*/
 }
 
 .content-flex {
     display: flex;
+    flex-direction: column;
     flex: 1;
     margin-left: 2rem;
-   justify-content:center;
+    /*justify-content: center;*/
 }
 
 .navbar {
@@ -32,19 +33,6 @@
     width: 100%; /* Full width */
     box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
     z-index:5;
-}
-
-#home-card {
-    /*width: 83vw !important;*/
-    border: 3px solid #EBEBED;
-}
-
-.card-content-flex {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:center;
-    padding:1rem;
 }
 
 
@@ -95,7 +83,7 @@ footer {
 .color-inner{
     display:flex;
     flex-wrap:wrap;
-    justify-content:center;
+    /*justify-content:center;*/
     /*justify-content:space-between;*/
 }
 
@@ -106,10 +94,10 @@ footer {
 }
 
 .color-cell{
-    min-width:38px;
-    min-height:38px;
+    width:38px;
+    height:38px;
     background-color:red;
-    margin:0.3rem;
+    margin:0.2rem;
     border-radius:7px;
 }
 
@@ -123,6 +111,7 @@ footer {
     font-weight: 600;
     word-spacing: 6px;
 }
+
 
 
 

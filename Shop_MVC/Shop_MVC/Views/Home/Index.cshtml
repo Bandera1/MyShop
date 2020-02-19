@@ -1,8 +1,6 @@
 ﻿
 <div class="home-flex">
-    <div class="sidebar-flex">
-
-
+    @*<div class="sidebar-flex">
         <span>
             <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collCateg" aria-expanded="false" aria-controls="collapseExample">
                 CATEGORIES
@@ -29,7 +27,13 @@
         </p>
         <div class="collapse" id="collProduc">
             <div class="card card-body">
-
+                <nav class="home-nav">
+                    <ul class="sidebar">
+                        <li><a>Adidas</a></li>
+                        <li><a>Nike</a></li>
+                        <li><a>Puma</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
 
@@ -39,8 +43,22 @@
             </button>
         </p>
         <div class="collapse" id="collSize">
-            <div class="card card-body">
-
+            <div class="card card-body size-flex">
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
             </div>
         </div>
 
@@ -52,7 +70,6 @@
         <div class="collapse" id="collClrs">
             <div class="card card-body">
                 <div class="color-flex">
-                    @*<p class="color-text">COLOR</p>*@
                     <div class="color-inner">
                         <div class="color-cell"></div>
                         <div class="color-cell"></div>
@@ -71,24 +88,84 @@
         </p>
         <div class="collapse" id="collGender">
             <div class="card card-body">
-
+                <nav class="home-nav">
+                    <ul class="sidebar">
+                        <li><a>Men</a></li>
+                        <li><a>Woman</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
 
-        <p>
+        @*<p>
             <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collRtng" aria-expanded="false" aria-controls="collapseExample">
-                RATING
+                OTHERS
             </button>
         </p>
         <div class="collapse" id="collRtng">
             <div class="card card-body">
+                <input type="range" multiple value="0,100" />
 
             </div>
-        </div>
+        </div>*@
 
+    @*</div>*@
+
+    <div class="sidebar-flex">
+        <nav class="home-nav">
+            <ul class="sidebar">
+                <li><a>Sport</a></li>
+                <li><a>Woman</a></li>
+                <li><a>Mens</a></li>
+                <li><a>New collection</a></li>
+                <li><a>Old collection</a></li>
+                <li><a>Sport</a></li>
+                <li><a>Woman</a></li>
+                <li><a>Mens</a></li>
+                <li><a>New collection</a></li>
+                <li><a>Old collection</a></li>
+                <li><a>Sport</a></li>
+                <li><a>Woman</a></li>
+                <li><a>Mens</a></li>
+                <li><a>New collection</a></li>
+                <li><a>Old collection</a></li>
+                <li><a>Sport</a></li>
+                <li><a>Woman</a></li>
+                <li><a>Mens</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>New collection</a></li>
+                <li><a>Old collection</a></li>
+            </ul>
+
+        </nav>    
     </div>
 
+   
+
+
     <div class="content-flex">
+        @*<div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                Sort by
+            </button>
+            <div class="dropdown-menu dropdown-menu-lg-right">
+                <button class="dropdown-item" type="button">Newest</button>
+                <button class="dropdown-item" type="button">Price (high - low)</button>
+                <button class="dropdown-item" type="button">Price (low - high)</button>
+                <button class="dropdown-item" type="button">Top sellers</button>
+            </div>
+        </div>*@
+        <p></p>
         <div id="home-card" class="card">
             <div class="card-content-flex">
                 @{
@@ -97,11 +174,10 @@
                         @await Html.PartialAsync("HomeProduct", null)
                     }
                 }
-
             </div>
 
 
-            <div id="paginationDiv" class="pagination">
+            @*<div id="paginationDiv" class="pagination">
                 <a class="pre">&laquo;</a>
                 <a class="prev">&lsaquo;</a>
                 <a class="paginationButton">1</a>
@@ -115,7 +191,7 @@
                 <a class="paginationButton">500</a>
                 <a class="next">&rsaquo;</a>
                 <a class="pre">&raquo;</a>
-            </div>
+            </div>*@
 
         </div>
     </div>

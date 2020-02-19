@@ -15,3 +15,12 @@
 .sidebar-flex p{
     margin-top: 0rem !important;
 }
+
+.content-flex .btn-group-vertical > .btn, .btn-group > .btn, .dropdown-menu-lg-right {
+    flex: 0.1 !important;
+    right: initial;
+}
+
+.content-flex .btn-group-vertical > .btn, .btn-group > .btn{
+    margin-bottom:0.5rem;
+}
