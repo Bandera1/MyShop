@@ -6,17 +6,15 @@
     <title>My Shop + @ViewBag.Title</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="~/css/simple-sidebar.css" rel="stylesheet" />
     <link href="~/css/home/home.css" rel="stylesheet" />
-    <link href="~/css/home/sidebar/mySideBar.css" rel="stylesheet" />
+    <link href="~/css/other/sidebar/mySideBar.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
     <link href="~/css/other/paginationStyle.css" rel="stylesheet" />
     <link href="~/css/other/newPaginationStyle.css" rel="stylesheet" />
     <link href="~/css/other/Dropdown.css" rel="stylesheet" />
-    <link href="~/css/home/bootstrapRe.css" rel="stylesheet" />
-    <link href="~/css/home/sidebar/size-flex.css" rel="stylesheet" />
-
+    <link href="~/css/other/bootstrapRe.css" rel="stylesheet" />
+    <link href="~/css/other/sidebar/size-flex.css" rel="stylesheet" />
 
     <script src="https://kit.fontawesome.com/8e6e62a7d6.js" crossorigin="anonymous"></script>
 </head>
@@ -113,11 +111,13 @@
     </nav>
 
 
+
     <main>
+
         @RenderBody()
         @RenderSection("Scripts", required: false)
     </main>
-    <div style="height:24.3vh"></div>
+    @*<div style="height:24.3vh"></div>*@
 
 
     <footer>

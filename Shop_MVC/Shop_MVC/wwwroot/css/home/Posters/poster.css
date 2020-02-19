@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.main_slider {
+    max-width: 100vw;
+    min-height: 45rem;
+    background-size: cover;
+    background-position: center center;
+    margin-top: 3.5rem;
+    object-fit: cover; /* Do not scale the image */
+    object-position: center top; /* Center the image within the element */
+    background-image: url('../../../images/home/slider_1.jpg');
+}
+
+
+@media only screen and (max-width: 1199px) {
+    .main_slider {
+        min-height: 475px;
+        height: calc(100vw / 1.714);
+        margin-top: 1rem;
+        object-fit: cover; 
+        object-position: center top; 
+    }
+}
+
+@media only screen and (max-width:835px){
+    .main_slider{
+        margin-top:0rem;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .main_slider {
+        height: calc(100vh - 70px);       
+        margin-top: 0rem;
+        object-fit: none; 
+        object-position: top center; 
+    }
+}
