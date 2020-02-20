@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Shop + @ViewBag.Title</title>
+    <title>My Shop</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="~/css/home/home.css" rel="stylesheet" />
@@ -24,88 +24,128 @@
         <input type="checkbox" id="tm">
         <ul class="main-menu clearfix">
             <li><a style="font-weight:700;" asp-area="" asp-controller="Home" asp-action="Index" asp-route-category="LOL">My Shop</a></li>
-            <li>
-                <a href="#">
-                    Mens
-                    <span class="drop-icon">▾</span>
-                    <label title="Toggle Drop-down" class="drop-icon" for="sm1">▾</label>
-                </a>
-                <input type="checkbox" id="sm1">
-                <ul class="sub-menu">
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    Womans
-                    <span class="drop-icon">▾</span>
-                    <label title="Toggle Drop-down" class="drop-icon" for="sm3">▾</label>
-                </a>
-                <input type="checkbox" id="sm3">
-                <ul class="sub-menu">
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    Kids
-                    <span class="drop-icon">▾</span>
-                    <label title="Toggle Drop-down" class="drop-icon" for="sm4">▾</label>
-                </a>
-                <input type="checkbox" id="sm4">
-                <ul class="sub-menu">
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    Producers
-                    <span class="drop-icon">▾</span>
-                    <label title="Toggle Drop-down" class="drop-icon" for="sm2">▾</label>
-                </a>
-                <input type="checkbox" id="sm2">
-                <ul class="sub-menu">
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#">Item 2.1</a></li>
-                    <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
-                </ul>
-            </li>
+
+            @{
+
+
+                int b = 0;
+                foreach (var type in Model.Types)
+                {
+                    <li>
+                        <a href="#">
+                            @type.Name
+                            <span class="drop-icon">▾</span>
+                            <label title="Toggle Drop-down" class="drop-icon" for="sm+@b">▾</label>
+                        </a>
+                        <input type="checkbox" id="sm+@b">
+                        <ul class="sub-menu">
+                            @{
+
+
+                                List<Category> list = new List<Category>();
+                                List<string> subCategoryList = new List<string>();
+
+                                for (int i = 0; i < Model.AllCategories.Count; i++)
+                                {
+                                    if (Model.AllCategories[i].TypeId == type.Id && Model.AllCategories[i].ParentId == 0)
+                                    {
+                                        list.Add(Model.AllCategories[i]);
+                                    }
+                                }
+
+
+
+
+                                int count = list.Count;
+                                if (count > 5)
+                                {
+                                    count = 5;
+                                }
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    for (int k = 0; k < Model.AllCategories.Count; k++)
+                                    {
+                                        if (Model.AllCategories[k].ParentId == list[i].Id && Model.AllCategories[k].TypeId == list[i].TypeId)
+                                        {
+                                            subCategoryList.Add(Model.AllCategories[k].Name);
+                                        }
+                                    }
+
+
+                                    if (subCategoryList.Count <= 0)
+                                    {
+                                        <li><a href="#">@list[i].Name</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="#">
+                                                @list[i].Name
+                                                <span class="drop-icon">▾</span>
+                                                <label title="Toggle Drop-down" class="drop-icon" for="sm+@b*@b*@b">▾</label>
+                                            </a>
+                                            <input type="checkbox" id="sm+@b*@b*@b">
+                                            <ul class="sub-menu">
+                                                @{
+                                                    foreach (var subCate in subCategoryList)
+                                                    {
+                                                        <li><a href="#">@subCate</a></li>
+                                                    }
+                                                }
+                                                <li><a href="#" style="font-size:15px;font-weight:600;text-align:center;">All @type.Name @list[i].Name.ToLower()</a></li>
+                                            </ul>
+                                        </li>
+                                    }
+
+                                    subCategoryList.Clear();
+                                }
+                            }
+                            <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
+                        </ul>
+                    </li>
+                    b++;
+
+                }
+                <li>
+                    <a href="#">
+                        Producers
+                        <span class="drop-icon">▾</span>
+                        <label title="Toggle Drop-down" class="drop-icon" for="sm+@b">▾</label>
+                    </a>
+                    <input type="checkbox" id="sm+@b">
+                    <ul class="sub-menu">
+                        @{
+                            foreach (var producer in Model.Producers)
+                            {
+                                <li><a href="#">@producer.Name</a></li>                             
+                            }
+                        }
+
+
+                        <li><a href="#" style="font-weight:600;text-align:center;">All categories</a></li>
+                    </ul>
+                </li>
+            }
+
+
             <li><a href="#">Contacts</a></li>
             <li><a href="#">About Us</a></li>
-            <button class="btn btn-warning">Sign in</button>
+            @{
+                if (Model.IsUserLogin)
+                {
+                    <button class="btn btn-danger">Sign up</button>
+                }
+                else
+                {
+                    <button class="btn btn-warning">Sign in</button>
+                }
+            }            
+
             <button type="button" class="btn btn-light">
                 <i class="fas fa-shopping-basket"></i>
-                <span class="shopingCount">12</span>
+                <span class="shopingCount">@Model.ShopCartCount</span>
+
             </button>
         </ul>
     </nav>
