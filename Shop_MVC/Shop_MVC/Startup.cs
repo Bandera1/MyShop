@@ -50,6 +50,7 @@ namespace Shop_MVC
             services.AddTransient<IProduct, ProductRepository>();
             services.AddTransient<IProductRating, ProductRatingRepository>();
             services.AddTransient<IShopingCart, ShopingCartRepository>();
+            services.AddTransient<IUser, UserRepository>();
 
             services.AddSession();
 
@@ -122,7 +123,11 @@ namespace Shop_MVC
                 // template: "{controller}/{action}/{subCategory?}",
                 // defaults: new { Controller = "Category", action = "Index" }
                 // );
-
+                routes.MapRoute(
+                   name: "ContactRoute",
+                   template: "{controller}/{action}",
+                   defaults: new { Controller = "Information", action = "Contacts" }
+                   );
             });
         }
     }

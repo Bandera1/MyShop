@@ -12,5 +12,11 @@ namespace Shop_MVC.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Contacts()
+        {
+            return View();
+        }
     }
 }

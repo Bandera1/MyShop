@@ -52,15 +52,4 @@ namespace FirstASP.NETapplication.Data.EFContext
             });
         }
     }
-
-    //public class EFDbContext : DbContext
-    //{
-    //    public EFDbContext(DbContextOptions<EFDbContext> options) : base(options)
-    //    {
-
-    //    }
-
-    //    public virtual DbSet<Car> Cars { get; set; }
-    //    public virtual DbSet<Category> Categories { get; set; }
-    //}
 }

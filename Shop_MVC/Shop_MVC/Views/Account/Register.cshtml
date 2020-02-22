@@ -1,0 +1,50 @@
+﻿@model Shop_MVC.ViewModels.Account.RegisterViewModel
+
+
+@{
+    Layout = "_Layout";
+}
+
+
+
+<!-- Mobile Specific Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- Font-->
+<link rel="stylesheet" type="text/css" href="~/css/account/register/css/nunito-font.css">
+<!-- Main Style Css -->
+<link rel="stylesheet" href="~/css/account/register/css/style.css" />
+
+
+<div class="form-v6">
+    <div class="page-content">
+        <div class="form-v6-content">
+            <div class="form-left">
+                <img src="~/images/account/form-v6.jpg" alt="form">
+            </div>
+            <form class="form-detail" method="post" asp-controller="Account" asp-action="Register">
+                <div asp-validation-summary="ModelOnly"></div>
+                <h2>Register</h2>
+                <div class="form-row">
+                    <span asp-validation-for="Name" style="color:red"></span>
+                    <input asp-for="Name" type="text" class="input-text" placeholder="Your Name" required>
+                </div>
+                <div class="form-row">
+                    <span asp-validation-for="Email" style="color:red"></span>
+                    <input asp-for="Email" type="text" class="input-text" placeholder="Email Address" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                </div>
+                <div class="form-row">
+                    <span asp-validation-for="Password" style="color:red"></span>
+                    <input asp-for="Password" type="password" class="input-text" placeholder="Password" required>
+                </div>
+                <div class="form-row">
+                    <span asp-validation-for="PasswordConfirm" style="color:red"></span>
+                    <input asp-for="PasswordConfirm" type="password" class="input-text" placeholder="Confirm Password" required />
+                </div>
+              
+                <div class="form-row-last">
+                    <input type="submit" name="register" class="register" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

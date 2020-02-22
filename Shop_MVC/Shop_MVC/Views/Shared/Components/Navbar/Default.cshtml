@@ -111,7 +111,7 @@
 
         <li><a href="#">Sales</a></li>
         <li><a href="#">Newest</a></li>
-        <li><a href="#">Contacts</a></li>
+        <li><a asp-area="" asp-controller="Information" asp-action="Contacts">Contacts</a></li>
         <li><a href="#">About Us</a></li>
         @{
             if (Model.IsUserLogin)
@@ -120,7 +120,10 @@
             }
             else
             {
-                <button class="btn btn-warning">Sign in</button>
+                <form asp-controller="Account" asp-action="Register" method="get">
+                    <button type="submit" class="btn btn-warning">Sign In</button>
+                </form>
+
             }
         }
 

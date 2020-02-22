@@ -61,10 +61,11 @@ footer {
     transition: 0.4s;
 }
 
-    .footer-text:hover {
-        cursor: pointer;
-        color: red;
-    }
+.footer-text:hover {
+    cursor: pointer;
+    color: red;
+    text-decoration:none;
+}
 
 
 
