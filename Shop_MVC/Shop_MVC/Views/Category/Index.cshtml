@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "_Layout";
+}
+<link href="~/css/category/flex.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+
+
+<div class="category-flex">
+
+    @{
+        foreach (var type in Model.Types)
+        {
+            <div class="category-item">
+                <p class="item-title">@type.Name</p>
+                <div class="subCategory-flex">
+                    @{
+                        List<Category> categoryList = new List<Category>();
+                        for (int i = 0; i < Model.AllCategories.Count; i++)
+                        {
+                            if (Model.AllCategories[i].ParentId <= 0 && Model.AllCategories[i].TypeId == type.Id)
+                            {
+                                categoryList.Add(Model.AllCategories[i]);
+                            }
+                        }
+
+
+                        List<Category> subCategoryList = new List<Category>();
+                        foreach (var name in categoryList)
+                        {
+                            <div class="subCategory-item">
+                                @{
+                                    <p class="subCategory-title">@name.Name</p>
+
+                                    for (int i = 0; i < Model.AllCategories.Count; i++)
+                                    {
+                                        if (Model.AllCategories[i].ParentId == name.Id && Model.AllCategories[i].TypeId == type.Id)
+                                        {
+                                            subCategoryList.Add(Model.AllCategories[i]);
+                                        }
+                                    }
+
+                                    <ul>
+                                        @{
+                                            foreach (var subCat in subCategoryList)
+                                            {
+                                                <li><a>@subCat.Name</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                    subCategoryList.Clear();
+                                }
+                            </div>
+                        }
+                        categoryList.Clear();
+                    }
+
+                </div>
+            </div>
+            @*<div class="category-item">
+                    <p class="item-title">MEN`S</p>
+                    <div class="subCategory-flex">
+                        <div class="subCategory-item">
+                            <p class="subCategory-title">Pants</p>
+                            <ul>
+                                <li><a>T-Shirt</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@
+        }
+    }
+
+
+
+</div>

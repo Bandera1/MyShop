@@ -9,23 +9,29 @@ using System.Threading.Tasks;
 
 namespace Shop_MVC.Data.Repository
 {
-    public class ProductRepository : IProduct
+    public class CategoryTypeRepository : ICategoryType
     {
         private readonly EFDbContext _context;
 
-        public ProductRepository(EFDbContext dbContext)
+        public CategoryTypeRepository(EFDbContext dbContext)
         {
             _context = dbContext;
         }
 
-        public void AddProduct(Product product)
+        public void AddCategory(Category category)
         {
-           _context.Products.Add(product);
+            _context.Categories.Add(category);
+            _context.SaveChanges();
         }
 
-        public List<Product> GetProducts(List<Filter<Product>> Filters, Func<Product, object> key,int count, int startIndex = 0)
+        public void AddCategoryType(CategoryType category)
         {
-            var res = _context.Products.ToList();
+            throw new NotImplementedException();
+        }
+
+        public List<CategoryType> GetCategories(List<Filter<CategoryType>> Filters, Func<CategoryType, object> key, int count, int startIndex = 0)
+        {
+            var res = _context.CategoryTypes.ToList();
 
             if (count == null || count <= 0)
             {

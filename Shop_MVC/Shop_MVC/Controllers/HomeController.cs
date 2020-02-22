@@ -5,8 +5,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Shop_MVC.Data.Interfaces;
 using Shop_MVC.Data.Models;
+using Shop_MVC.Data.Models.Helpers;
 using Shop_MVC.Models;
 using Shop_MVC.ViewModels.Home;
 
@@ -29,77 +33,24 @@ namespace Shop_MVC.Controllers
         //}
 
 
-
-
+      
 
 
 
 
         public IActionResult Index()
         {
-            HomePageViewModel viewModel = new HomePageViewModel();
+            
 
-            viewModel.Types = new List<CategoryType>();
-            viewModel.Producers = new List<Producer>();
-            viewModel.AllCategories = new List<Category>();
-
-            viewModel.Types.Add(new CategoryType() { Id=1, Name = "Men`s" });
-            viewModel.Types.Add(new CategoryType() { Id=2, Name = "Women`s" });
-            viewModel.Types.Add(new CategoryType() { Id=3, Name = "Kid`s" });
-
-            viewModel.Producers.Add(new Producer() { Name = "Adidas" });
-            viewModel.Producers.Add(new Producer() { Name = "Nike" });
-            viewModel.Producers.Add(new Producer() { Name = "Reebok" });
-
-            viewModel.AllCategories.Add(new Category
-            {
-                Id = 1,
-                Name = "Shoes",
-                TypeId = 1                
-            });
-            viewModel.AllCategories.Add(new Category
-            {
-                Id = 2,
-                Name = "Clothing",
-                TypeId = 1
-            });
-            viewModel.AllCategories.Add(new Category
-            {
-                Id = 3,
-                Name = "Accesories",
-                TypeId = 1
-            });
+            //OrderKey = (x => x.ID);
+            //Filters.Add(new Filter<Books>
+            //{
+            //    Name = "Themes." + nameTheme,
+            //    Expression = (x => x.Themes.NameTheme == nameTheme)
+            //});
 
 
-            viewModel.AllCategories.Add(new Category
-            {
-                Name = "Running",
-                ParentId = 1,
-                TypeId = 1
-            });
-            viewModel.AllCategories.Add(new Category
-            {
-                Name = "Pants",
-                ParentId = 2,
-                TypeId = 1
-            });
-            viewModel.AllCategories.Add(new Category
-            {
-                Name = "Watchs",
-                ParentId = 3,
-                TypeId = 1
-            });
-
-
-
-
-
-
-            viewModel.IsUserLogin = true;
-            viewModel.ShopCartCount = 3;
-
-
-            return View(viewModel);
+            return View();
         }
 
         public IActionResult About()

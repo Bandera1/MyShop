@@ -33,7 +33,7 @@ namespace Shop_MVC.Data.Repository
                 count = res.Count - startIndex;
             }
 
-            if (Filters.Count != 0)
+            if (Filters != null && Filters.Count != 0)
             {
                 res = res.Where(x => Filters.Any(f => f.Expression(x) == true))
                 .ToList();

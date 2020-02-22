@@ -45,11 +45,13 @@ namespace Shop_MVC
 
 
             services.AddTransient<ICategory, CategoryRepository>();
+            services.AddTransient<ICategoryType, CategoryTypeRepository>();
             services.AddTransient<IProducer, ProducerRepository>();
             services.AddTransient<IProduct, ProductRepository>();
             services.AddTransient<IProductRating, ProductRatingRepository>();
             services.AddTransient<IShopingCart, ShopingCartRepository>();
 
+            services.AddSession();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -68,16 +70,59 @@ namespace Shop_MVC
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                    name: "default",
                    template: "{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "HomeRoute",
+                //    template: "Home/Products",
+                //    defaults: new { Controller = "Home", action = "Products" });
+                //routes.MapRoute(
+                //    name:"MensRoute",
+                //    template: "{controller}/{action}/{category?}/{producer?}/{size?}/{colors?}/{gender?}/{rating?}",
+                //    defaults: new { Controller = "Mens",action = "Catalog" }
+                //    );
+                
+                //----------------------Product routs--------------------------
+
                 routes.MapRoute(
-                    name: "HomeRoute",
-                    template: "Home/Products/{page}/{category?}/{producer?}/{size?}/{colors?}/{gender?}/{rating?}",
-                    defaults: new { Controller = "Home", action = "Products" });
+                    name: "MensRoute",
+                    template: "{controller}/{action}/{filers?}",
+                    defaults: new { Controller = "Mens", action = "Catalog" }
+                    );
+                routes.MapRoute(
+                   name: "WomensRoute",
+                   template: "{controller}/{action}/{filers?}",
+                   defaults: new { Controller = "Womens", action = "Catalog" }
+                   );
+                routes.MapRoute(
+                   name: "KidsRoute",
+                   template: "{controller}/{action}/{filers?}",
+                   defaults: new { Controller = "Kids", action = "Catalog" }
+                   );                
+                routes.MapRoute(
+                   name:"SaleRoute",
+                   template: "{controller}/{action}/{filtes?}",
+                   defaults: new { Controller = "Sale", action = "Catalog" }
+                   );
+                routes.MapRoute(
+                   name: "NewestRoute",
+                   template: "{controller}/{action}/{filtes?}",
+                   defaults: new { Controller = "Newest", action = "Catalog" }
+                   );
+
+                //----------------------Others route-----------------------
+
+                //routes.MapRoute(
+                // name: "CategoryRoute",
+                // template: "{controller}/{action}/{subCategory?}",
+                // defaults: new { Controller = "Category", action = "Index" }
+                // );
+
             });
         }
     }
