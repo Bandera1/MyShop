@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FirstASP.NETapplication.Data.EFContext;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,25 @@ namespace Shop_MVC
                 .AddEntityFrameworkStores<EFDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie(options =>
+               {
+                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                   options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+               });
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Default Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+            });
+
+
 
             services.AddTransient<ICategory, CategoryRepository>();
             services.AddTransient<ICategoryType, CategoryTypeRepository>();
@@ -52,7 +72,10 @@ namespace Shop_MVC
             services.AddTransient<IShopingCart, ShopingCartRepository>();
             services.AddTransient<IUser, UserRepository>();
 
+
+            services.AddMemoryCache();
             services.AddSession();
+            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -60,6 +83,8 @@ namespace Shop_MVC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -69,6 +94,7 @@ namespace Shop_MVC
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
@@ -115,6 +141,20 @@ namespace Shop_MVC
                    template: "{controller}/{action}/{filtes?}",
                    defaults: new { Controller = "Newest", action = "Catalog" }
                    );
+
+                //----------------------Account----------------------------
+
+                routes.MapRoute(
+                  name: "LoginRoute",
+                  template: "{controller}/{action}",
+                  defaults: new { Controller = "Account", action = "Login" }
+                  );
+                routes.MapRoute(
+                  name: "RegisterRoute",
+                  template: "{controller}/{action}",
+                  defaults: new { Controller = "Account", action = "Register" }
+                  );
+
 
                 //----------------------Others route-----------------------
 

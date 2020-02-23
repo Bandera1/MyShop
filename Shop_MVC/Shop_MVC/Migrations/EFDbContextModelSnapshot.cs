@@ -291,15 +291,13 @@ namespace Shop_MVC.Migrations
 
                     b.Property<int>("ProductId");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("ShopingCarts");
                 });
@@ -308,20 +306,8 @@ namespace Shop_MVC.Migrations
                 {
                     b.Property<string>("Id");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(75);
-
                     b.Property<string>("Image")
                         .HasMaxLength(150);
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(75);
-
-                    b.Property<string>("MiddleName")
-                        .IsRequired()
-                        .HasMaxLength(75);
 
                     b.Property<DateTime>("RegistrationDate");
 
@@ -413,7 +399,7 @@ namespace Shop_MVC.Migrations
 
                     b.HasOne("Shop_MVC.Data.Models.UserProfile", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Shop_MVC.Data.Models.UserProfile", b =>

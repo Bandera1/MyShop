@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using FirstASP.NETapplication.Data.EFContext;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Shop_MVC.Data.Interfaces;
 using Shop_MVC.Data.Models;
+using Shop_MVC.Models;
 using Shop_MVC.ViewModels.Account;
 
 namespace Shop_MVC.Controllers
 {
+    //[Authorize(Roles = "User")]
     public class AccountController : Controller
     {
         private readonly UserManager<DbUser> _userManager;
@@ -36,7 +44,11 @@ namespace Shop_MVC.Controllers
 
         [HttpGet]
         public IActionResult Register()
-        {
+        {        
+            if (HttpContext.Session.GetString("UserInfo") != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             return View();
         }
@@ -44,6 +56,10 @@ namespace Shop_MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            if (!(await _roleManager.RoleExistsAsync("User")))
+            {
+                var result = await _roleManager.CreateAsync(new DbRole() { Name = "User" });
+            }
 
             var roleName = "User";
 
@@ -79,6 +95,7 @@ namespace Shop_MVC.Controllers
                 };
 
 
+                // Add DbUser to Database
                 var result = await _userManager.CreateAsync(dbUser, model.Password);
                 result = _userManager.AddToRoleAsync(dbUser, roleName).Result;
 
@@ -87,6 +104,15 @@ namespace Shop_MVC.Controllers
                 {
                     // установка куки
                     await _signInManager.SignInAsync(dbUser, false);
+                    // Set session5
+                    dbUser = _user.GetUsers(null, x => x.Id, -1).FirstOrDefault(x => x.Email == model.Email);
+                    var userInfo = new UserInfo()
+                    {
+                        UserId = dbUser.Id,
+                    };
+                    HttpContext.Session.SetString("UserInfo", JsonConvert.SerializeObject(userInfo));
+                    
+
                     return RedirectToAction("Index", "Home");
                 }               
             }
@@ -142,13 +168,83 @@ namespace Shop_MVC.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            if (HttpContext.Session.GetString("UserInfo") != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            // Get user from Db by email
+            var user = _user.GetUsers(null, x => x.Id,-1).FirstOrDefault(x => x.Email == model.Email);
+            // If user not found
+            if(user == null)
+            {
+                ModelState.AddModelError("Email", "User not exist");
+                return View(model);
+            }
+
+            // Check enter password
+            var result = _signInManager.PasswordSignInAsync(user, model.Password, false, false).Result;
+            // If password doesn`t correct
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError("Password", "Password not correct");
+                return View(model);
+            }
+
+            // Sign in
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            // Coockie
+            await Authenticate(model.Email);
+
+            // Add session
+            var userInfo = new UserInfo()
+            {
+                UserId = user.Id         
+            };
+            HttpContext.Session.SetString("UserInfo", JsonConvert.SerializeObject(userInfo));
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        private async Task Authenticate(string userName)
+        {
+            // создаем один claim
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+            };
+            // создаем объект ClaimsIdentity
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            // установка аутентификационных куки
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+        }
+
+
+        
+        public IActionResult AccessDenied()
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Remove("UserInfo");
+
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

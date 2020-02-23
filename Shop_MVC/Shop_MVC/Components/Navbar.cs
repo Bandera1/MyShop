@@ -39,13 +39,19 @@ namespace Shop_MVC.Components
             viewModel.ShopCartCount = 1;
             viewModel.IsUserLogin = (HttpContext.Session.GetString("UserInfo") != null) ? true : false;
 
+            //viewModel.IsUserLogin = true;
+            //if(HttpContext.Session.GetString("UserInfo") == null)
+            //{
+            //    viewModel.IsUserLogin = false;
+            //}
+
             List<Filter<ShopingCart>> filters = new List<Filter<ShopingCart>>();
             filters.Add(new Filter<ShopingCart>
             {
                 Name = "ShopCartCount",
                 Expression = (x => x.UserId == JsonConvert.DeserializeObject<UserInfo>(HttpContext.Session.GetString("UserInfo")).UserId)
             });
-            viewModel.ShopCartCount = (viewModel.IsUserLogin == false) ? 0 : _shopingCart.GetShopingCarts(filters, null, -1).Count;
+            viewModel.ShopCartCount = (viewModel.IsUserLogin == false) ? 0 : _shopingCart.GetShopingCarts(filters, x => x.Id, -1).Count;
 
 
             return View(viewModel);

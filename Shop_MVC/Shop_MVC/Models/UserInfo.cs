@@ -7,6 +7,6 @@ namespace Shop_MVC.Models
 {
     public class UserInfo
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     }
 }
