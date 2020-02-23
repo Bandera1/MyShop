@@ -56,10 +56,10 @@ namespace Shop_MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (!(await _roleManager.RoleExistsAsync("User")))
-            {
-                var result = await _roleManager.CreateAsync(new DbRole() { Name = "User" });
-            }
+            //if (!(await _roleManager.RoleExistsAsync("User")))
+            //{
+            //    var result = await _roleManager.CreateAsync(new DbRole() { Name = "User" });
+            //}
 
             var roleName = "User";
 
@@ -73,6 +73,11 @@ namespace Shop_MVC.Controllers
                 if(CheckEmailToExist(model.Email) != null)
                 {
                     ModelState.AddModelError("Email", CheckEmailToExist(model.Email));
+                    return View(model);
+                }
+                if(CheckPassword(model.Password) != null)
+                {
+                    ModelState.AddModelError("Password", CheckPassword(model.Password));
                     return View(model);
                 }
                 if (CheckConfirmPassword(model.Password,model.PasswordConfirm) != null)
@@ -147,6 +152,38 @@ namespace Shop_MVC.Controllers
             {
                 return "User alredy exist";
             }
+
+            return null;
+        }
+
+        private string CheckPassword(string password)
+        {
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMiniMaxChars = new Regex(@".{6,16}");
+            var hasLowerChar = new Regex(@"[a-z]+");
+            var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
+
+            if (!hasNumber.IsMatch(password))
+            {
+                return "Password must contain numbers";
+            }
+            if (!hasUpperChar.IsMatch(password))
+            {
+                return "Password must contain upper symbols";
+            }
+            if (!hasMiniMaxChars.IsMatch(password))
+            {
+                return "Password must contain more 6 and less 15 symbols";
+            }
+            if (!hasLowerChar.IsMatch(password))
+            {
+                return "Password must contain lower symbols";
+            }
+            //if (!hasSymbols.IsMatch(password))
+            //{
+            //    return "Password must contain symbols";
+            //}
 
             return null;
         }

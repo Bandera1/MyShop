@@ -35,3 +35,4 @@ C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.dll
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.pdb
 C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.csproj.CopyComplete
+C:\Users\Vlad\Desktop\MyShop\Shop_MVC\Shop_MVC\obj\Debug\netcoreapp2.1\Shop_MVC.csprojAssemblyReference.cache
