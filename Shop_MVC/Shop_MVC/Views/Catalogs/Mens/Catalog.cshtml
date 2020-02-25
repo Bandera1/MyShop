@@ -1,0 +1,197 @@
+﻿<link href="~/css/home/home.css" rel="stylesheet" />
+<link href="~/css/other/card-flex.css" rel="stylesheet" />
+<link href="~/css/other/bootstrapRe.css" rel="stylesheet" />
+<link href="~/css/catalog/Slider.css" rel="stylesheet" />
+<link href="~/css/catalog/style.css" rel="stylesheet" />
+
+
+@using Shop_MVC.Services
+@{
+    Layout = "_Layout";
+}
+
+<div class="catalog-flex">
+    <div class="sidebar-flex">
+        <span>
+            <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collCateg" aria-expanded="false" aria-controls="collapseExample">
+                CATEGORIES
+                @FilterService.ParseToFilter(Model)
+            </button>
+        </span>
+        <div class="collapse" id="collCateg">
+            <div class="card card-body">
+                <label for="one"><input type="checkbox" id="one" />First checkbox</label>
+                <label for="one"><input type="checkbox" id="one" />First checkbox</label>
+                @*<nav class="home-nav">
+                        <ul class="sidebar">
+                            <li><a>Sport</a></li>
+                            <li><a>Woman</a></li>
+                            <li><a>Mens</a></li>
+                            <li><a>New collection</a></li>
+                            <li><a>Old collection</a></li>
+                        </ul>
+                    </nav>*@
+            </div>
+        </div>
+
+        <p>
+            <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collProduc" aria-expanded="false" aria-controls="collapseExample">
+                PRODUCERS
+            </button>
+        </p>
+        <div class="collapse" id="collProduc">
+            <div class="card card-body">
+                <label for="one"><input type="checkbox" id="one" />First checkbox</label>
+                <label for="one"><input type="checkbox" id="one" />First checkbox</label>
+            </div>
+        </div>
+
+        <p>
+            <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collSize" aria-expanded="false" aria-controls="collapseExample">
+                SIZE
+            </button>
+        </p>
+        <div class="collapse" id="collSize">
+            <div class="card card-body size-flex">
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+                <div class="size-cell">
+                    <span>11.5</span>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collClrs" aria-expanded="false" aria-controls="collapseExample">
+                COLORS
+            </button>
+        </p>
+        <div class="collapse" id="collClrs">
+            <div class="card card-body">
+                <div class="color-flex">
+                    <div class="color-inner">
+                        <div class="color-cell"></div>
+                        <div class="color-cell"></div>
+                        <div class="color-cell"></div>
+                        <div class="color-cell"></div>
+                        <div class="color-cell"></div>
+                        <div class="color-cell"></div>
+                        <div class="color-cell"></div>
+                        <div class="color-cell"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<p>
+                <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collGender" aria-expanded="false" aria-controls="collapseExample">
+                    GENDER
+                </button>
+            </p>
+            <div class="collapse" id="collGender">
+                <div class="card card-body">
+                    <nav class="home-nav">
+                        <ul class="sidebar">
+                            <li><a>Men</a></li>
+                            <li><a>Woman</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>*@
+
+        <p>
+            <button id="CategoriesDropDownBtn" class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collCost" aria-expanded="false" aria-controls="collapseExample">
+                Cost
+            </button>
+        </p>
+        <div class="collapse" id="collCost">
+            <div class="card card-body">
+                <div class="range-slider">
+                    <span>
+                        <input type="number" value="0" min="0" max="7000" />
+                        &#x9; - &#x9;<input type="number" value="7000" min="0" max="7000" />
+                        <button type="button" class="btn btn-success">OK</button>
+                    </span>
+                    <input value="0" min="0" max="7000" step="100" type="range" />
+                    <input value="7000" min="0" max="7000"
+                           step="100" type="range" />
+                    @*<svg width="100%" height="24">
+                        <line x1="4" y1="0" x2="300" y2="0" stroke="#444" stroke-width="12" stroke-dasharray="1 28">
+                        </line>
+                    </svg>*@
+                </div>
+            </div>          
+        </div>
+    </div>
+    
+    <div class="content-flex">
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                Sort by
+            </button>
+            <div class="dropdown-menu dropdown-menu-lg-right">
+                <button class="dropdown-item active" type="button">Newest</button>
+                <button class="dropdown-item" type="button">Price (high - low)</button>
+                <button class="dropdown-item" type="button">Price (low - high)</button>
+                <button class="dropdown-item" type="button">Top sellers</button>
+            </div>
+        </div>
+        <p></p>
+        <div id="home-card" class="card">
+            <div class="card-content-flex">
+                @{
+                    for (int i = 0; i < 8; i++)
+                    {
+                        @await Html.PartialAsync("HomeProduct", null)
+                    }
+                }
+            </div>
+
+
+            <div id="paginationDiv" class="pagination">
+                <a class="pre">&laquo;</a>
+                <a class="prev">&lsaquo;</a>
+                <a class="paginationButton">1</a>
+                <a class="three_dot">. . .</a>
+                <a class="paginationButton">5</a>
+                <a class="paginationButton">6</a>
+                <a class="paginationButton active">7</a>
+                <a class="paginationButton">8</a>
+                <a class="paginationButton">9</a>
+                <a class="three_dot">. . .</a>
+                <a class="paginationButton">500</a>
+                <a class="next">&rsaquo;</a>
+                <a class="pre">&raquo;</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/js/catalog/slider.js"></script>
+
+@*<div class="sidebar-flex">
+        <nav class="home-nav">a
+            <ul class="sidebar">
+                <li><a>Woman</a></li>
+                <li><a>Mens</a></li>
+                <li><a>Kids</a></li>
+            </ul>
+
+        </nav>
+    </div>*@
+
+
+
+
+

@@ -108,7 +108,7 @@ namespace Shop_MVC.Controllers
                 if (result.Succeeded)
                 {
                     // установка куки
-                    await _signInManager.SignInAsync(dbUser, false);
+                    await _signInManager.SignInAsync(dbUser, true);
                     // Set session5
                     dbUser = _user.GetUsers(null, x => x.Id, -1).FirstOrDefault(x => x.Email == model.Email);
                     var userInfo = new UserInfo()
@@ -240,7 +240,7 @@ namespace Shop_MVC.Controllers
             }
 
             // Sign in
-            await _signInManager.SignInAsync(user, isPersistent: false);
+            await _signInManager.SignInAsync(user, isPersistent: true);
             // Coockie
             await Authenticate(model.Email);
 

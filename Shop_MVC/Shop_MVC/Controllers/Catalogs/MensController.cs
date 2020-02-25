@@ -8,9 +8,11 @@ namespace Shop_MVC.Controllers.Catalogs
 {
     public class MensController : Controller
     {
-        public IActionResult Index()
+        [Route("Mens/Catalog")]
+        [Route("Mens/Catalog/{filters?}")]
+        public IActionResult Catalog(string filters)
         {
-            return View();
+            return View("~/Views/Catalogs/Mens/Catalog.cshtml");
         }
     }
 }

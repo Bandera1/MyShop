@@ -11,7 +11,7 @@
             foreach (var type in Model.Types)
             {
                 <li>
-                    <a href="#">
+                    <a asp-controller="@type.Name" asp-action="Catalog">
                         @type.Name
                         <span class="drop-icon">▾</span>
                         <label title="Toggle Drop-down" class="drop-icon" for="sm+@b">▾</label>
